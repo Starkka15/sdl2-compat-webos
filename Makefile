@@ -14,7 +14,9 @@ SOURCES = $(SRCDIR)/sdl2_video.c \
           $(SRCDIR)/sdl2_joystick.c \
           $(SRCDIR)/sdl2_surface.c \
           $(SRCDIR)/sdl2_filesystem.c \
-          $(SRCDIR)/sdl2_messagebox.c
+          $(SRCDIR)/sdl2_messagebox.c \
+          $(SRCDIR)/sdl2_keyboard.c \
+          $(SRCDIR)/sdl2_audio.c
 
 OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 

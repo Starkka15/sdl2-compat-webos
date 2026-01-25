@@ -58,6 +58,10 @@ int SDL_GetWindowDisplayIndex(SDL_Window *window);
 int SDL_GetDesktopDisplayMode(int displayIndex, SDL_DisplayMode *mode);
 int SDL_GetNumVideoDisplays(void);
 
+/* OpenGL functions */
+int SDL_GL_SetSwapInterval(int interval);
+int SDL_GL_GetSwapInterval(void);
+
 /* Internal: get the screen surface for a window */
 SDL_Surface* SDL2_GetWindowSurface(SDL_Window *window);
 

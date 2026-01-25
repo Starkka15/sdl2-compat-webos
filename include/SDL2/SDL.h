@@ -27,6 +27,11 @@
 #include "SDL_blendmode.h"
 #include "SDL_filesystem.h"
 #include "SDL_messagebox.h"
+#include "SDL_scancode.h"
+#include "SDL_keyboard.h"
+#include "SDL_audio.h"
+#include "SDL_gamecontroller.h"
+#include "SDL_haptic.h"
 
 /* SDL2 init flags (map to SDL1.2) */
 #ifndef SDL_INIT_EVENTS

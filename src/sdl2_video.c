@@ -257,3 +257,21 @@ SDL_Surface* SDL2_GetWindowSurface(SDL_Window *window) {
     fprintf(stderr, "[SDL2-compat] GetWindowSurface called, window=%p\n", (void*)window);
     return window ? window->surface : NULL;
 }
+
+/* VSync control - stored state */
+static int gl_swap_interval = 1;
+
+int SDL_GL_SetSwapInterval(int interval) {
+    /*
+     * SDL1.2 doesn't have a standard way to set vsync.
+     * On webOS/EGL, vsync is typically always on.
+     * We just store the requested value.
+     */
+    gl_swap_interval = interval;
+    /* Return 0 for success - we pretend it worked */
+    return 0;
+}
+
+int SDL_GL_GetSwapInterval(void) {
+    return gl_swap_interval;
+}

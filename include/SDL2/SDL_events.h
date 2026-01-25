@@ -16,7 +16,7 @@ extern "C" {
 
 /* SDL_Keycode - in SDL2 this is Sint32, in SDL1.2 it's SDLKey enum */
 typedef SDLKey SDL_Keycode;
-typedef SDLKey SDL_Scancode;
+/* Note: SDL_Scancode is defined in SDL_scancode.h */
 
 /* SDL2 event type aliases that may differ */
 #ifndef SDL_WINDOWEVENT
@@ -44,6 +44,62 @@ typedef enum {
     SDL_WINDOWEVENT_FOCUS_LOST,
     SDL_WINDOWEVENT_CLOSE
 } SDL_WindowEventID;
+
+/* SDL2 event types for joystick/controller that don't exist in SDL1.2 */
+/* We define high values that won't conflict with SDL1.2 event types */
+#ifndef SDL_JOYDEVICEADDED
+#define SDL_JOYDEVICEADDED      0x605
+#define SDL_JOYDEVICEREMOVED    0x606
+#endif
+
+#ifndef SDL_CONTROLLERAXISMOTION
+#define SDL_CONTROLLERAXISMOTION    0x650
+#define SDL_CONTROLLERBUTTONDOWN    0x651
+#define SDL_CONTROLLERBUTTONUP      0x652
+#define SDL_CONTROLLERDEVICEADDED   0x653
+#define SDL_CONTROLLERDEVICEREMOVED 0x654
+#endif
+
+/* SDL2 joystick ID type */
+typedef Sint32 SDL_JoystickID;
+
+/* Controller button event structure */
+typedef struct SDL_ControllerButtonEvent {
+    Uint32 type;
+    Uint32 timestamp;
+    Sint32 which;
+    Uint8 button;
+    Uint8 state;
+    Uint8 padding1;
+    Uint8 padding2;
+} SDL_ControllerButtonEvent;
+
+/* Controller axis event structure */
+typedef struct SDL_ControllerAxisEvent {
+    Uint32 type;
+    Uint32 timestamp;
+    Sint32 which;
+    Uint8 axis;
+    Uint8 padding1;
+    Uint8 padding2;
+    Uint8 padding3;
+    Sint16 value;
+    Uint16 padding4;
+} SDL_ControllerAxisEvent;
+
+/* Controller device event structure */
+typedef struct SDL_ControllerDeviceEvent {
+    Uint32 type;
+    Uint32 timestamp;
+    Sint32 which;
+} SDL_ControllerDeviceEvent;
+
+/* Joystick device event structure */
+typedef struct SDL_JoyDeviceEvent {
+    Uint32 type;
+    Uint32 timestamp;
+    Sint32 which;
+} SDL_JoyDeviceEvent;
 
 /* SDL2 text input events - not fully supported in SDL1.2 */
 /* Games that need text input will need special handling */

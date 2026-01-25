@@ -21,6 +21,10 @@ typedef Sint32 SDL_JoystickID;
 const char* SDL_JoystickNameForIndex(int device_index);
 SDL_bool SDL_JoystickGetAttached(SDL_Joystick *joystick);
 int SDL_JoystickRumble(SDL_Joystick *joystick, Uint16 low_freq, Uint16 high_freq, Uint32 duration);
+SDL_JoystickID SDL_JoystickInstanceID(SDL_Joystick *joystick);
+
+/* For tracking joysticks - simple wrapper around index for SDL1.2 */
+SDL_Joystick* SDL_JoystickFromInstanceID(SDL_JoystickID instance_id);
 
 /* These are already in SDL1.2:
  * SDL_NumJoysticks()
